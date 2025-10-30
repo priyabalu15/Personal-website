@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Suvaaa 🎂</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        max-width: 600px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .memories-section {
+        padding: 25px 15px;
+      }
+
+      .memories-section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2em;
+        color: #5a4fcf;
+        margin-bottom: 8px;
+      }
+
+      .memories-section p {
+        color: #444;
+        font-size: 1.1em;
+      }
+
+      .audio-section {
+        padding: 20px;
+      }
+
+      .audio-section h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3em;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .audio-frame {
+        width: 100%;
+        border: none;
+        border-radius: 15px;
+        height: 80px;
+      }
+
+      .footer {
+        padding: 20px;
+        color: #666;
+        font-size: 14px;
+        background: rgba(102, 126, 234, 0.05);
+      }
+
+      @media (max-width: 600px) {
+        .memories-section h2 {
+          font-size: 1.8em;
+        }
+
+        .audio-frame {
+          height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-container">
+        <img
+          src="https://drive.google.com/thumbnail?id=1AXf4_e5AJx6Rl_ET-AuH8v8xzROzFjLy&sz=w1000"
+          alt="Birthday Memories"
+        />
+      </div>
+
+      <div class="memories-section">
+        <h2>Memories ✨</h2>
+        <p>For You Suvaaa 💖</p>
+      </div>
+
+      <div class="audio-section">
+        <h3>🎵 Our Special Memory</h3>
+        <iframe
+          class="audio-frame"
+          src="https://drive.google.com/file/d/1c_1dt2f0-nmiUrUXU-qyaIxZsegv1GLs/preview"
+          allow="autoplay"
+        ></iframe>
+      </div>
+
+      <div class="footer">Made with ❤️ for your special day</div>
+    </div>
+  </body>
+</html>
