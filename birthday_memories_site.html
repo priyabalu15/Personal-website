@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Suvaaa 🎂</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Floating particles background */
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .particle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        animation: float 15s infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.7;
+        }
+        90% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(100px);
+          opacity: 0;
+        }
+      }
+
+      .container {
+        max-width: 650px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        animation: slideIn 0.8s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .header-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        padding: 25px 25px 0;
+      }
+
+      .icon-btn {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .icon-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+      }
+
+      .icon-btn svg {
+        stroke: white;
+      }
+
+      .image-container {
+        padding: 25px;
+        text-align: center;
+        position: relative;
+      }
+
+      .image-wrapper {
+        position: relative;
+        display: inline-block;
+        animation: fadeIn 1s ease-out 0.3s both;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .birthday-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+      }
+
+      .birthday-image:hover {
+        transform: scale(1.02);
+      }
+
+      .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 60%,
+          rgba(102, 126, 234, 0.1) 100%
+        );
+        border-radius: 20px;
+        pointer-events: none;
+      }
+
+      .loading-text {
+        color: #666;
+        font-style: italic;
+        padding: 20px;
+      }
+
+      .error-text {
+        color: #e74c3c;
+        padding: 20px;
+        text-align: center;
+        animation: shake 0.5s;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-10px);
+        }
+        75% {
+          transform: translateX(10px);
+        }
+      }
+
+      .memories-section {
+        text-align: center;
+        padding: 40px 30px 30px;
+        position: relative;
+        animation: fadeIn 1s ease-out 0.5s both;
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 1;
+          transform: translateX(-50%) scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: translateX(-50%) scale(1.2);
+        }
+      }
+
+      .memories-section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3em;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 15px;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+
+      .memories-section p {
+        font-size: 1.3em;
+        color: #555;
+        font-weight: 400;
+        letter-spacing: 1px;
+      }
+
+      .audio-player-container {
+        padding: 30px 25px 40px;
+        animation: fadeIn 1s ease-out 0.7s both;
+      }
+
+      .audio-wrapper {
+        background: linear-gradient(
+          135deg,
+          #1e3c72 0%,
+          #2a5298 50%,
+          #7e22ce 100%
+        );
+        border-radius: 30px;
+        padding: 40px 35px;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Animated gradient background */
+      .audio-wrapper::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg,
+          rgba(255, 255, 255, 0) 0deg,
+          rgba(255, 255, 255, 0.1) 90deg,
+          rgba(255, 255, 255, 0) 180deg,
+          rgba(255, 255, 255, 0.1) 270deg,
+          rgba(255, 255, 255, 0) 360deg
+        );
+        animation: rotate 8s linear infinite;
+      }
+
+      /* Glowing orbs */
+      .audio-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 20%;
+        right: 10%;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        filter: blur(40px);
+        animation: float-orb 6s ease-in-out infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes float-orb {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(-20px, -30px) scale(1.1);
+        }
+      }
+
+      .audio-title {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .audio-title h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8em;
+        color: white;
+        font-weight: 600;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .audio-title p {
+        font-size: 0.95em;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 300;
+        letter-spacing: 0.5px;
+      }
+
+      .audio-frame-wrapper {
+        position: relative;
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .audio-wrapper iframe {
+        width: 100%;
+        height: 120px;
+        border: none;
+        border-radius: 15px;
+        background: white;
+        display: block;
+      }
+
+      .audio-controls-overlay {
+        position: relative;
+        z-index: 2;
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .audio-visualizer {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 40px;
+      }
+
+      .bar {
+        width: 4px;
+        background: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.9)
+        );
+        border-radius: 2px;
+        animation: visualize 0.8s ease-in-out infinite;
+      }
+
+      .bar:nth-child(1) {
+        animation-delay: 0s;
+        height: 20%;
+      }
+      .bar:nth-child(2) {
+        animation-delay: 0.1s;
+        height: 40%;
+      }
+      .bar:nth-child(3) {
+        animation-delay: 0.2s;
+        height: 60%;
+      }
+      .bar:nth-child(4) {
+        animation-delay: 0.3s;
+        height: 80%;
+      }
+      .bar:nth-child(5) {
+        animation-delay: 0.4s;
+        height: 100%;
+      }
+      .bar:nth-child(6) {
+        animation-delay: 0.5s;
+        height: 80%;
+      }
+      .bar:nth-child(7) {
+        animation-delay: 0.6s;
+        height: 60%;
+      }
+      .bar:nth-child(8) {
+        animation-delay: 0.7s;
+        height: 40%;
+      }
+      .bar:nth-child(9) {
+        animation-delay: 0.8s;
+        height: 20%;
+      }
+
+      @keyframes visualize {
+        0%,
+        100% {
+          transform: scaleY(0.3);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+      }
+
+      .audio-label {
+        text-align: center;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .play-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        color: white;
+        font-size: 14px;
+        animation: pulse 2s infinite;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+        }
+        50% {
+          transform: scale(1.08);
+          box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        }
+      }
+
+      .music-note {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.2);
+        font-size: 24px;
+        animation: float-note 4s ease-in-out infinite;
+      }
+
+      .music-note:nth-child(1) {
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .music-note:nth-child(2) {
+        top: 20%;
+        right: 15%;
+        animation-delay: 1s;
+        font-size: 18px;
+      }
+
+      .music-note:nth-child(3) {
+        bottom: 15%;
+        left: 15%;
+        animation-delay: 2s;
+        font-size: 20px;
+      }
+
+      .music-note:nth-child(4) {
+        bottom: 25%;
+        right: 10%;
+        animation-delay: 1.5s;
+        font-size: 22px;
+      }
+
+      @keyframes float-note {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.2;
+        }
+        50% {
+          transform: translateY(-20px) rotate(10deg);
+          opacity: 0.4;
+        }
+      }
+
+      .footer-note {
+        text-align: center;
+        padding: 30px 20px;
+        color: #666;
+        font-size: 14px;
+        font-style: italic;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(102, 126, 234, 0.05)
+        );
+      }
+
+      .heart {
+        display: inline-block;
+        color: #e74c3c;
+        animation: heartbeat 1.5s infinite;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.1);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+
+      /* Confetti effect */
+      .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: #f0f;
+        position: absolute;
+        animation: confettiFall 3s linear infinite;
+      }
+
+      @keyframes confettiFall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .memories-section h2 {
+          font-size: 2.2em;
+        }
+
+        .memories-section p {
+          font-size: 1.1em;
+        }
+
+        .container {
+          border-radius: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating particles background -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+      <!-- Header Buttons -->
+      <div class="header-buttons">
+        <button
+          class="icon-btn"
+          onclick="window.location.reload()"
+          title="Refresh"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+            <path d="M21 3v5h-5" />
+            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+            <path d="M3 21v-5h5" />
+          </svg>
+        </button>
+        <button class="icon-btn" onclick="shareContent()" title="Share">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="18" cy="5" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Birthday Image -->
+      <div class="image-container">
+        <div class="image-wrapper">
+          <img
+            id="birthdayImage"
+            class="birthday-image"
+            src="https://drive.google.com/thumbnail?id=1AXf4_e5AJx6Rl_ET-AuH8v8xzROzFjLy&sz=w1000"
+            alt="Birthday Memories"
+            onerror="handleImageError()"
+          />
+          <div class="image-overlay"></div>
+        </div>
+        <div id="imageError" class="error-text" style="display: none">
+          ⚠️ Image failed to load. Please check sharing settings.
+        </div>
+      </div>
+
+      <!-- Memories Text -->
+      <div class="memories-section">
+        <h2>Memories✨ <span class="heart">♥</span></h2>
+        <p>For You Suvaaa!!!</p>
+      </div>
+
+      <!-- Audio Player -->
+      <div class="audio-player-container">
+        <div class="audio-wrapper">
+          <!-- Floating music notes -->
+          <div class="music-note">♪</div>
+          <div class="music-note">♫</div>
+          <div class="music-note">♪</div>
+          <div class="music-note">♫</div>
+
+          <div class="audio-title">
+            <h3>🎵 Our Special Memories</h3>
+            <p>Press play and let the memories flow</p>
+          </div>
+
+          <div class="audio-frame-wrapper">
+            <iframe
+              src="https://drive.google.com/file/d/1c_1dt2f0-nmiUrUXU-qyaIxZsegv1GLs/preview"
+              allow="autoplay"
+            >
+            </iframe>
+          </div>
+
+          <div class="audio-controls-overlay">
+            <div class="audio-visualizer">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+            <div class="audio-label">
+              <span class="play-icon">▶</span>
+              <span>Tap to listen</span>
+            </div>
+            <div class="audio-visualizer">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer-note">
+        Made with <span class="heart">♥</span> for your special day
+      </div>
+    </div>
+
+    <script>
+      // Create floating particles
+      function createParticles() {
+        const particles = document.getElementById("particles");
+        for (let i = 0; i < 30; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 15 + "s";
+          particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+          particles.appendChild(particle);
+        }
+      }
+
+      // Handle image error
+      function handleImageError() {
+        document.getElementById("imageError").style.display = "block";
+        document.querySelector(".image-wrapper").style.display = "none";
+      }
+
+      // Share functionality
+      function shareContent() {
+        if (navigator.share) {
+          navigator
+            .share({
+              title: "Happy Birthday Suvaaa! 🎂",
+              text: "Check out this special birthday memory!",
+              url: window.location.href,
+            })
+            .catch(() => {});
+        } else {
+          // Fallback copy to clipboard
+          navigator.clipboard
+            .writeText(window.location.href)
+            .then(() => {
+              alert("✨ Link copied to clipboard!");
+            })
+            .catch(() => {
+              alert("Share this link: " + window.location.href);
+            });
+        }
+      }
+
+      // Initialize particles on load
+      window.addEventListener("load", () => {
+        createParticles();
+      });
+    </script>
+  </body>
+</html>
